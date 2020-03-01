@@ -13,28 +13,28 @@ import LogInImage from '../images/log-in.png'
 class LogIn extends Component {
     state = {
         id: ''
-      }
-      handleChange = (e) => {
+    }
+    handleChange = (e) => {
         const id = e.target.value
         this.setState(() => ({
             id
         }))
-      }
-      handleSubmit = (e) => {
+    }
+    handleSubmit = (e) => {
         e.preventDefault()
-    
+        
         const { id } = this.state
         // const { dispatch } = this.props
-    
+        
         // set authed user with selected id
         // dispatch(handleAddTweet(text, id))
-    
+        
         console.log('Log In', id)
-    
+        
         this.setState(() => ({
           id: ''
         }))
-      }
+    }
     render() {
     const {users, userIds} = this.props
     const {id} = this.state

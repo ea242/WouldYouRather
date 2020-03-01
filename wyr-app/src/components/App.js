@@ -6,7 +6,8 @@ import LoadingBar from 'react-redux-loading'
 // import Nav from './Nav'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import LogIn from './LogIn'
+//import LogIn from './LogIn'
+import QuestionAdd from './QuestionAdd'
 
 class App extends Component {
   componentDidMount() {
@@ -16,7 +17,7 @@ class App extends Component {
     return(
       <div className="App">
         <LoadingBar />
-        <LogIn />
+        <QuestionAdd />
       </div>
     )
   }
