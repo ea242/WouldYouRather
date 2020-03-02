@@ -129,11 +129,10 @@ class Question extends Component {
 
 function mapStateToProps({ questions, users, authedUser }, props) {
     const { question_id } = props.match.params
-    const question = questions[question_id]
-    const questionUser = users[question.author]
-    let userAnswer = null
-    userAnswer = question.optionOne.votes.includes(authedUser) ? 'optionOne' : userAnswer;
-    userAnswer = userAnswer !== 'optionOne' && question.optionTwo.votes.includes(authedUser) ? 'optionTwo' : userAnswer;
+    const question = questions[question_id] ? questions[question_id] : null
+    const questionUser = question ? users[question.author] : null
+    const userAnswer = authedUser !== '' && users[authedUser].answers[question_id] ? users[authedUser].answers[question_id] : null
+    console.log(userAnswer);
     return {
         question,
         questionUser,
