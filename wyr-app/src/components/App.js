@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import Navigation from './Navigation'
 import QuestionsBoard from './QuestionsBoard'
 import QuestionAdd from './QuestionAdd'
