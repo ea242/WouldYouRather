@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import UserScore from './UserScore'
-
+import { Redirect } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 class ScoreBoard extends Component {
     render() {
+        const {authedUser} = this.props
+        if (authedUser === '') {
+            return <Redirect to='/login' />
+        }
         return (
             <Container>
                 {this.props.usersIds.map((id) => (
@@ -22,8 +26,9 @@ class ScoreBoard extends Component {
     }
 }
 // need to check thislogic
-function mapStateToProps({ users }) {
+function mapStateToProps({ users, authedUser }) {
     return{
+        authedUser,
         usersIds: Object.keys(users)
             .sort((a,b) => (Object.keys(users[b].answers).length + users[b].questions.length) - (Object.keys(users[a].answers).length + users[a].questions.length))
     }

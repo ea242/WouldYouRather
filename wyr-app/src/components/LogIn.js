@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import { withRouter } from 'react-router-dom'
+import { setAuthedUser } from '../actions/authedUser'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-
 import LogInImage from '../images/log-in.png'
 
 class LogIn extends Component {
@@ -24,16 +24,14 @@ class LogIn extends Component {
         e.preventDefault()
         
         const { id } = this.state
-        // const { dispatch } = this.props
-        
-        // set authed user with selected id
-        // dispatch(handleAddTweet(text, id))
-        
-        console.log('Log In', id)
+        const { dispatch } = this.props
+
+        dispatch(setAuthedUser(id))
         
         this.setState(() => ({
           id: ''
         }))
+        this.props.history.push('/')
     }
     render() {
     const {users, userIds} = this.props
@@ -48,7 +46,7 @@ class LogIn extends Component {
                                 <Card.Title>Welcome to Would You Rather App!</Card.Title>
                                 <Card.Img variant="top" src={LogInImage} />
                                 <Form onSubmit={this.handleSubmit}>
-                                    <Form.Group controlId="exampleForm.ControlSelect1">
+                                    <Form.Group controlId="log-in-form">
                                         <Form.Label>Please log in with a user.</Form.Label>
                                         <Form.Control as="select" onChange={this.handleChange}>
                                             <option></option>
@@ -80,4 +78,4 @@ function mapStateToProps({ users }) {
 }
 
 
-export default connect(mapStateToProps)(LogIn)
+export default withRouter(connect(mapStateToProps)(LogIn))

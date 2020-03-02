@@ -14,30 +14,28 @@ class UserScore extends Component {
             <Card>
                 <Card.Header><h5>{user.name}</h5></Card.Header>
                 <Card.Body>
-                    <Card.Text>
-                        <Container>
-                            <Row>
-                                <Col>
-                                    <Image src={user.avatarURL} width={100} height={105} roundedCircle />
-                                </Col>
-                                <Col>
-                                    <p className="align-middle">
-                                        Answers: {Object.keys(user.answers).length}
-                                        <br />
-                                        Questions: {user.questions.length}
-                                    </p>
-                                </Col>
-                                <Col>
-                                    <Card className="text-center">
-                                        <Card.Header>Score</Card.Header>
-                                        <Card.Body>
-                                            <h2>{Object.keys(user.answers).length + user.questions.length}</h2>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </Card.Text>
+                    <Container>
+                        <Row>
+                            <Col>
+                                <Image src={user.avatarURL} width={100} height={105} roundedCircle />
+                            </Col>
+                            <Col>
+                                <p className="align-middle">
+                                    Answers: {Object.keys(user.answers).length}
+                                    <br />
+                                    Questions: {user.questions.length}
+                                </p>
+                            </Col>
+                            <Col>
+                                <Card className="text-center">
+                                    <Card.Header>Score</Card.Header>
+                                    <Card.Body>
+                                        <h2>{Object.keys(user.answers).length + user.questions.length}</h2>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        </Row>
+                    </Container>
                 </Card.Body>
             </Card>
         )

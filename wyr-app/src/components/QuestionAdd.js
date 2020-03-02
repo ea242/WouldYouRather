@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
-
+import { withRouter } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -33,9 +34,14 @@ class QuestionAdd extends Component {
             optionOne: '',
             optionTwo: ''
         }))
+        this.props.history.push('/')
     }
     render() {
     const {optionOne, optionTwo} = this.state
+    const {authedUser} = this.props
+    if (authedUser === '') {
+        return <Redirect to='/login' />
+    }
         return (
             <Container>
                 <Row>
@@ -78,4 +84,10 @@ class QuestionAdd extends Component {
     }
 }
 
-export default connect()(QuestionAdd)
+function mapStateToProps({authedUser}) {
+    return {
+        authedUser
+    }
+}
+
+export default withRouter(connect(mapStateToProps)(QuestionAdd))
