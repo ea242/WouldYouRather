@@ -34,10 +34,22 @@ class Question extends Component {
         }))
     }
     render() {
-        const { question, questionUser, userAnswer, authedUser} = this.props
+        const { question, questionUser, userAnswer, authedUser, question_id} = this.props
         const { answer } = this.state
         if (authedUser === '') {
-            return <Redirect to='/login' />
+            return <Redirect to={{
+                pathname: "/login",
+                state: { stateName: `/questions/${question_id}`}
+              }} />
+        }
+        if ( question === null) {
+            return (
+                <div>
+                    <h3 className='text-center'>
+                        404. Data does not exist.
+                    </h3>
+                </div>
+            )
         }
         return (
             <Container>
@@ -137,7 +149,8 @@ function mapStateToProps({ questions, users, authedUser }, props) {
         question,
         questionUser,
         authedUser,
-        userAnswer
+        userAnswer,
+        question_id
     }
 }
 

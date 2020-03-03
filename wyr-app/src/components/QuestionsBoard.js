@@ -12,7 +12,10 @@ class QuestionsBoard extends Component {
     render() {
         const { answeredIds, unansweredIds, authedUser} = this.props
         if (authedUser === '') {
-            return <Redirect to='/login' />
+            return <Redirect to={{
+                pathname: "/login",
+                state: { stateName: '/'}
+              }} />
         } 
 
         return (

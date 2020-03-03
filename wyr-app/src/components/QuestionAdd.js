@@ -40,7 +40,10 @@ class QuestionAdd extends Component {
     const {optionOne, optionTwo} = this.state
     const {authedUser} = this.props
     if (authedUser === '') {
-        return <Redirect to='/login' />
+        return <Redirect to={{
+            pathname: "/login",
+            state: { stateName: '/add'}
+          }} />
     }
         return (
             <Container>

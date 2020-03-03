@@ -24,14 +24,14 @@ class LogIn extends Component {
         e.preventDefault()
         
         const { id } = this.state
-        const { dispatch } = this.props
+        const { dispatch, location} = this.props
 
         dispatch(setAuthedUser(id))
         
         this.setState(() => ({
           id: ''
         }))
-        this.props.history.push('/')
+        this.props.history.push(location.state && location.state.stateName ? location.state.stateName : '/')
     }
     render() {
     const {users, userIds} = this.props
